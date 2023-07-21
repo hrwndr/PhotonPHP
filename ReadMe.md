@@ -45,19 +45,19 @@ Routing
 
 PhotonPHP uses a simple routing system to handle incoming requests. Routes are defined in the `routes.php` file. You can create custom routes and associate them with specific controller methods.
 
-    ```// routes.php
+    // routes.php
     
     $router->addRoute('/', 'HomeController@index');
     $router->addRoute('/about', 'AboutController@index');
     $router->addRoute('/contact', 'ContactController@index');
-    // Add more routes as needed```
+    // Add more routes as needed
 
 Authentication
 --------------
 
 PhotonPHP provides a basic user authentication system. To use authentication, implement the necessary login and logout functionality in the `AuthController`.
 
-    ```// app/controllers/AuthController.php
+    // app/controllers/AuthController.php
     
     class AuthController
     {
@@ -70,7 +70,7 @@ PhotonPHP provides a basic user authentication system. To use authentication, im
         {
             // Implement logout logic here
         }
-    }```
+    }
 
 You can then use the `login()` and `logout()` methods in your login and logout routes, respectively.
 
@@ -79,7 +79,7 @@ Middleware
 
 Middleware in PhotonPHP is a way to intercept and modify requests before they reach the controller. You can use middleware to add custom request handling, authentication checks, logging, and more.
 
-    ```// app/middleware/AuthMiddleware.php
+    // app/middleware/AuthMiddleware.php
     
     class AuthMiddleware
     {
@@ -87,7 +87,7 @@ Middleware in PhotonPHP is a way to intercept and modify requests before they re
         {
             // Implement authentication checks here
         }
-    }```
+    }
 
 To use middleware, register it in the `Router` class and associate it with specific routes.
 
