@@ -1,0 +1,122 @@
+/* Reset some default styles */
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Basic styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+nav ul li:first-child {
+    margin-left: 0;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header .logo {
+    font-size: 24px;
+}
+
+main {
+    padding: 0;
+}
+
+section.hero {
+    background-color: #f2f2f2;
+    text-align: center;
+    padding: 60px 0;
+}
+
+section.hero h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+section.hero p {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+section.hero .btn {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+section.features {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+section.features .feature {
+    text-align: center;
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+section.features .feature i {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+section.features .feature h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer p {
+    font-size: 14px;
+}
