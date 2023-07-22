@@ -1,9 +1,11 @@
- PhotonPHP - A Lightweight PHP Framework
+PhotonPHP - A Lightweight PHP Framework
 
 PhotonPHP - A Lightweight PHP Framework
 =======================================
 
 PhotonPHP is a lightweight PHP framework designed to provide essential features like routing, SEO support, and a pre-built admin panel. It enables developers to build web applications quickly and efficiently while maintaining flexibility and performance. This README.md file serves as a guide to understanding the framework and how to use its various features.
+
+PhotonPHP is created and managed by Harwinder Singh from [CodePanther](https://codepanther.in)
 
 Table of Contents
 -----------------
@@ -36,7 +38,7 @@ Getting Started
     
         git clone https://github.com/hrwndr/PhotonPHP.git
     
-2.  Set up your web server (e.g., Apache, Nginx) or run development ser using `php -S 127.0.0.1:7746` and the application will be running on `localhost:7746`.
+2.  Set up your web server (e.g., Apache, Nginx) or run development server using `php -S 127.0.0.1:7746` and the application will be running on `localhost:7746`.
 3.  Update the `config.php` file with your MySQL database credentials  Uncomment Database code from `index.php` if using database.
 5.  Start using PhotonPHP to build your web applications!
 
@@ -93,7 +95,7 @@ To use middleware, register it in the `Router` class and associate it with speci
 
     // app/routes.php
     
-    $router->addRoute('/admin', 'AdminController@index')->middleware('AuthMiddleware');
+    $router->addRoute('/admin', 'AdminController@index', ['AuthMiddleware']);
 
 Admin Panel
 -----------
@@ -108,7 +110,7 @@ While PhotonPHP provides some basic security features, it's essential to further
 Contributing
 ------------
 
-I, Harwinder Singh, welcome contributions from the community. If you find any issues or have ideas for improvements, feel free to open an issue or submit a pull request.
+I, Harwinder Singh welcome contributions from the community. If you find any issues or have ideas for improvements, feel free to open an issue or submit a pull request.
 
 License
 -------
