@@ -4,7 +4,7 @@
 // Uncomment the code below if database connection is required!
 // require_once 'core/Database.php';
 // $dbConfig = require_once 'config.php';
-// $pdo = Database::connect($dbConfig);
+// $db = new Database($dbConfig);
 
 require_once 'routes.php';
 

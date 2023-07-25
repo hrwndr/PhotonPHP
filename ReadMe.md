@@ -15,7 +15,14 @@ Table of Contents
 *   [Routing](#routing)
 *   [Authentication](#authentication)
 *   [Middleware](#middleware)
-*   [Admin Panel](#admin-panel)
+*   [Database](#database)
+    *   [Database Connection](#database-connection)
+    *   [Fetching Data](#fetching-data)
+    *   [Inserting Data](#inserting-data)
+    *   [Updating Data](#updating-data)
+    *   [Deleting Data](#deleting-data)
+    *   [Using Conditions](#using-conditions)
+    *   [Escaping Values](#escaping-values)
 *   [Security Considerations](#security-considerations)
 *   [Contributing](#contributing)
 *   [License](#license)
@@ -97,10 +104,131 @@ To use middleware, register it in the `Router` class and associate it with speci
     
     $router->addRoute('/admin', 'AdminController@index', ['AuthMiddleware']);
 
-Admin Panel
+Database
 -----------
 
-PhotonPHP comes with a pre-built admin panel that you can use to manage your application's data. You can customize and expand the admin panel according to your application's needs.
+Database Connection
+-------------------
+
+Before using the Database for database operations, you need to establish a database connection. For that you'll need to add your database details .i.e. `'db_host', 'db_user', 'db_pass', 'db_name'` to your `config.php` file.
+
+After adding the database details, uncomment the lines below in index.php 
+    
+    // Uncomment or add the lines below
+    require_once 'core/Database.php';
+    $dbConfig = require_once 'config.php';
+    $db = new Database($dbConfig);
+
+> **_NOTE:_**  Only mysqli is supported yet.
+
+Fetching Data
+-------------
+
+### Fetch All Records
+
+To retrieve all records from a database table, use the `fetchAll` method. It returns an array of associative arrays, where each array represents a database row.
+
+    
+    $records = $db->fetchAll('your_table_name');
+    foreach ($records as $record) {
+        // Process each $record
+        echo $record['column_name'];
+    }
+        
+
+### Fetch Single Row
+
+To retrieve a single row from a database table based on specific conditions, use the `fetchRow` method. Pass an associative array of conditions to filter the data.
+
+    
+    $conditions = ['id' => 1];
+    $record = $db->fetchRow('your_table_name', $conditions);
+    if ($record) {
+        // Process $record
+        echo $record['column_name'];
+    } else {
+        // No record found
+    }
+        
+
+Inserting Data
+--------------
+
+To insert data into a database table, use the `insert` method. Pass an associative array where keys represent the column names, and values represent the data to be inserted.
+
+    
+    $data = [
+        'column1' => 'value1',
+        'column2' => 'value2',
+        // Add more columns and values as needed
+    ];
+    
+    $result = $db->insert('your_table_name', $data);
+    if ($result) {
+        // Data inserted successfully
+    } else {
+        // Error occurred while inserting data
+    }
+        
+
+Updating Data
+-------------
+
+To update existing data in a database table, use the `update` method. Pass an associative array with the updated values and an optional associative array of conditions to filter the rows to be updated.
+
+    
+    $data = [
+        'column1' => 'new_value1',
+        'column2' => 'new_value2',
+        // Add more columns and values to update
+    ];
+    
+    $conditions = ['id' => 1]; // Optional: Use conditions to update specific rows
+    
+    $result = $db->update('your_table_name', $data, $conditions);
+    if ($result) {
+        // Data updated successfully
+    } else {
+        // Error occurred while updating data
+    }
+        
+
+Deleting Data
+-------------
+
+To delete data from a database table, use the `delete` method. Pass an associative array of conditions to filter the rows to be deleted.
+
+    
+    $conditions = ['id' => 1]; // Use conditions to delete specific rows
+    
+    $result = $db->delete('your_table_name', $conditions);
+    if ($result) {
+        // Data deleted successfully
+    } else {
+        // Error occurred while deleting data
+    }
+        
+
+Using Conditions
+----------------
+
+The `fetchRow`, `update`, and `delete` methods support using conditions to filter the rows to be fetched or updated. Pass an associative array where keys represent the column names, and values represent the conditions.
+
+    
+    $conditions = ['id' => 1];
+    $record = $db->fetchRow('your_table_name', $conditions);
+        
+
+Escaping Values
+---------------
+
+To prevent SQL injection, always escape user inputs before using them in database operations. The `escape` method in the Database class is provided for this purpose.
+
+    
+    $value = $db->escape($_POST['user_input']);
+        
+
+Remember to use proper validation and sanitization techniques to ensure the security of your application.
 
 Security Considerations
 -----------------------
