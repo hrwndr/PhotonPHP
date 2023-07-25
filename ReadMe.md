@@ -112,7 +112,7 @@ Database Connection
 
 Before using the Database for database operations, you need to establish a database connection. For that you'll need to add your database details .i.e. `'db_host', 'db_user', 'db_pass', 'db_name'` and set `db_in_use` to `true` in your `config.php` file.
 
-After adding the database details, you could use database metods in a controller as shown - 
+After adding the database details, you can use database method in a controller as shown - 
     
     class HomeController
     {
