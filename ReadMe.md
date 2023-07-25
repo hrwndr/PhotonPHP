@@ -110,14 +110,33 @@ Database
 Database Connection
 -------------------
 
-Before using the Database for database operations, you need to establish a database connection. For that you'll need to add your database details .i.e. `'db_host', 'db_user', 'db_pass', 'db_name'` to your `config.php` file.
+Before using the Database for database operations, you need to establish a database connection. For that you'll need to add your database details .i.e. `'db_host', 'db_user', 'db_pass', 'db_name'` and set `db_in_use` to `true` in your `config.php` file.
 
-After adding the database details, uncomment the lines below in index.php 
+After adding the database details, you could use database metods in a controller as shown - 
     
-    // Uncomment or add the lines below
-    require_once 'core/Database.php';
-    $dbConfig = require_once 'config.php';
-    $db = new Database($dbConfig);
+    class HomeController
+    {
+        private $db;
+
+        public function __construct($db)
+        {
+            $this->db = $this->db;
+        }
+
+        public function index()
+        {
+            // Your homepage logic here
+            // For example, fetching data from the database or processing some data
+
+            // Sample data for demonstration purposes
+            $title = 'Welcome to PhotonPHP!';
+            $dbData = $this->db->fetchAll('cash_flows');
+
+            // Load the corresponding view
+            require_once 'app/views/home.php';
+        }
+    }
+
 
 > **_NOTE:_**  Only mysqli is supported yet.
 
@@ -129,7 +148,7 @@ Fetching Data
 To retrieve all records from a database table, use the `fetchAll` method. It returns an array of associative arrays, where each array represents a database row.
 
     
-    $records = $db->fetchAll('your_table_name');
+    $records = $this->db->fetchAll('your_table_name');
     foreach ($records as $record) {
         // Process each $record
         echo $record['column_name'];
@@ -142,7 +161,7 @@ To retrieve a single row from a database table based on specific conditions, use
 
     
     $conditions = ['id' => 1];
-    $record = $db->fetchRow('your_table_name', $conditions);
+    $record = $this->db->fetchRow('your_table_name', $conditions);
     if ($record) {
         // Process $record
         echo $record['column_name'];
@@ -163,7 +182,7 @@ To insert data into a database table, use the `insert` method. Pass an associati
         // Add more columns and values as needed
     ];
     
-    $result = $db->insert('your_table_name', $data);
+    $result = $this->db->insert('your_table_name', $data);
     if ($result) {
         // Data inserted successfully
     } else {
@@ -185,7 +204,7 @@ To update existing data in a database table, use the `update` method. Pass an as
     
     $conditions = ['id' => 1]; // Optional: Use conditions to update specific rows
     
-    $result = $db->update('your_table_name', $data, $conditions);
+    $result = $this->db->update('your_table_name', $data, $conditions);
     if ($result) {
         // Data updated successfully
     } else {
@@ -201,7 +220,7 @@ To delete data from a database table, use the `delete` method. Pass an associati
     
     $conditions = ['id' => 1]; // Use conditions to delete specific rows
     
-    $result = $db->delete('your_table_name', $conditions);
+    $result = $this->db->delete('your_table_name', $conditions);
     if ($result) {
         // Data deleted successfully
     } else {
@@ -216,7 +235,7 @@ The `fetchRow`, `update`, and `delete` methods support using conditions to filte
 
     
     $conditions = ['id' => 1];
-    $record = $db->fetchRow('your_table_name', $conditions);
+    $record = $this->db->fetchRow('your_table_name', $conditions);
         
 
 Escaping Values
@@ -225,7 +244,7 @@ Escaping Values
 To prevent SQL injection, always escape user inputs before using them in database operations. The `escape` method in the Database class is provided for this purpose.
 
     
-    $value = $db->escape($_POST['user_input']);
+    $value = $this->db->escape($_POST['user_input']);
         
 
 Remember to use proper validation and sanitization techniques to ensure the security of your application.

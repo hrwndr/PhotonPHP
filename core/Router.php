@@ -1,9 +1,18 @@
 <?php
 // core/Router.php
+require_once 'Database.php';
 
 class Router
 {
     protected $routes = [];
+    protected $db;
+
+    public function __construct($dbConfig = [])
+    {
+        if (count($dbConfig) > 0) {
+            $this->db = new Database($dbConfig);
+        }
+    }
 
     public function addRoute($uri, $controller, $middleware = [])
     {
@@ -36,7 +45,7 @@ class Router
 
         require_once "app/controllers/{$controllerName}.php";
 
-        $controllerInstance = new $controllerName;
+        $controllerInstance = new $controllerName($this->db);
 
         $controllerInstance->$action();
     }
