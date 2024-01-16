@@ -67,4 +67,14 @@ class Router
             }
         }
     }
+
+    // Layout specific functions
+    public function renderLayout($content)
+    {
+        require "app/views/layout.php";
+    }
+    public function renderCustomLayout($content, $layout_path)
+    {
+        require $layout_path;
+    }
 }

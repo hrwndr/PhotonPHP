@@ -3,7 +3,7 @@
 <main>
     <section class="hero">
         <div class="container">
-            <h2>Welcome to PhotonPHP</h2>
+            <h2><?= $title ?></h2>
             <p>A lightweight PHP framework for building web applications.</p>
         </div>
     </section>

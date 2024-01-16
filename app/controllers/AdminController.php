@@ -13,7 +13,7 @@ class AdminController
         $welcomeMessage = 'Welcome to the Admin Panel!';
 
         // Load the corresponding view for the admin dashboard
-        require_once 'app/views/admin/dashboard.php';
+        return require_once 'app/views/admin/dashboard.php';
     }
 
     public function login()
@@ -27,6 +27,6 @@ class AdminController
         $loginMessage = 'You are now logged in as an admin!';
 
         // Load the corresponding view for the admin login
-        require_once 'app/views/admin/login.php';
+        return require_once 'app/views/admin/login.php';
     }
 }

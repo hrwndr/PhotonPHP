@@ -12,6 +12,6 @@ class HomeController
         $title = 'Welcome to PhotonPHP!';
 
         // Load the corresponding view
-        require_once 'app/views/layout.php';
+        return require_once 'app/views/pages/home.php';
     }
 }
