@@ -24,6 +24,7 @@ class Router
 
     public function dispatch($uri)
     {
+        $uri = explode('?', $uri)[0] ?? $uri;
         if (array_key_exists($uri, $this->routes)) {
             $route = $this->routes[$uri];
 
@@ -66,15 +67,5 @@ class Router
                 echo "Middleware not found: {$middlewareName}<br>";
             }
         }
-    }
-
-    // Layout specific functions
-    public function renderLayout($content)
-    {
-        require "app/views/layout.php";
-    }
-    public function renderCustomLayout($content, $layout_path)
-    {
-        require $layout_path;
     }
 }

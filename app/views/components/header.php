@@ -1,7 +1,7 @@
 <!-- app/views/header.php -->
 
 <!DOCTYPE html>
-<html>
+<html lang="<?= isset($_GET['lang']) ? $_GET['lang'] : 'en' ?>">
 
 <head>
     <meta charset="utf-8">
@@ -15,8 +15,9 @@
 <body>
     <header>
         <nav>
-            <div class="container">
-                <h1 class="logo">PhotonPHP</h1>
+            <h1 class="logo">PhotonPHP</h1>
+            <div class="language-switcher">
+                <?= isset($_GET['lang']) ? ($_GET['lang'] == 'en' ? '<a href="?lang=pa">ਪੰਜਾਬੀ</a>' : '<a href="?lang=en">English</a>') : '<a href="?lang=pa">ਪੰਜਾਬੀ</a>'; ?>
             </div>
         </nav>
     </header>

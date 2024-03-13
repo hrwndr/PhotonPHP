@@ -5,7 +5,7 @@
 <!-- Your footer content here (e.g., copyright, links, etc.) -->
 <footer>
     <div class="container">
-        <p>&copy; <?php echo date('Y'); ?> PhotonPHP. Create Something Amazing.</p>
+        <p>&copy; <?php echo date('Y'); ?> PhotonPHP. <?= __("Create Something Amazing.") ?></p>
     </div>
 </footer>
 

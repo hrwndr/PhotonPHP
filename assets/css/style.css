@@ -31,6 +31,7 @@ header {
 nav {
     display: flex;
     justify-content: space-between;
+    padding: 0  1%;
     align-items: center;
 }
 
@@ -54,6 +55,9 @@ nav ul li a {
 
 header .logo {
     font-size: 24px;
+}
+.language-switcher a {
+    color: #fff;
 }
 
 main {

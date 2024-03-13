@@ -9,7 +9,7 @@ class HomeController
         // For example, fetching data from the database or processing some data
 
         // Sample data for demonstration purposes
-        $title = 'Welcome to PhotonPHP!';
+        $title = __('Welcome to PhotonPHP!');
 
         // Load the corresponding view
         return require_once 'app/views/pages/home.php';

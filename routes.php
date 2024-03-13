@@ -1,5 +1,6 @@
 <?php
 require_once 'core/Router.php';
+require_once 'core/Locale.php';
 $dbConfig = require_once 'config.php';
 // Create the Router instance
 if ($dbConfig['db_in_use'] == true) {
