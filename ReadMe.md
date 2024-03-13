@@ -13,6 +13,7 @@ Table of Contents
 *   [Features](#features)
 *   [Getting Started](#getting-started)
 *   [Routing](#routing)
+*   [Multilingual Support](#multilingual-support)
 *   [Authentication](#authentication)
 *   [Middleware](#middleware)
 *   [Database](#database)
@@ -60,6 +61,29 @@ PhotonPHP uses a simple routing system to handle incoming requests. Routes are d
     $router->addRoute('/about', 'AboutController@index');
     $router->addRoute('/contact', 'ContactController@index');
     // Add more routes as needed
+
+Multilingual Support
+-------
+
+PhotonPHP supports multilingual feature which enables you to create multilingual web applications. Different translations can be added to `translations` folder by creating a new file inside with the language code eg. `translations/en.php` and `translations/pa.php` would look something like below:
+
+    // translations/en.php
+    
+    <?php
+    return [
+        'Welcome to PhotonPHP!' => 'Welcome to PhotonPHP!',
+        // Add more routes as needed
+    ]
+
+    // translations/pa.php
+    
+    <?php
+    return [
+        'Welcome to PhotonPHP!' => 'ਜੀ ਆਇਆਂ ਨੂੰ PhotonPHP ਵਿੱਚ!'
+        // Add more routes as needed
+    ]
+
+After defining the translation files you can change the language by passing a query string like `?lang=en` to the url.
 
 Authentication
 --------------
@@ -120,7 +144,7 @@ After adding the database details, you can use database method in a controller a
 
         public function __construct($db)
         {
-            $this->db = $this->db;
+            $this->db = $db;
         }
 
         public function index()
